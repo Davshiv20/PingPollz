@@ -249,6 +249,11 @@ app.post('/api/kick-student/:studentId', (req, res) => {
   }
 });
 
+// Health check endpoint
+app.get('/health', (req, res) => {
+  res.status(200).json({ status: 'ok' });
+});
+
 const PORT = process.env.PORT || 5000;
 
 server.listen(PORT, () => {
