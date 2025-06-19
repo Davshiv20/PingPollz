@@ -1,0 +1,80 @@
+.persona-card {
+  width: 800px;
+  max-width: 95vw;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  padding: 8px;
+  box-shadow: 0 8px 32px rgba(117, 101, 217, 0.15), 0 2px 8px rgba(117, 101, 217, 0.08);
+}
+
+.persona-badge {
+  margin-bottom: 24px;
+  margin-top: 8px;
+  margin-left:330px;
+  background: linear-gradient(90deg, #7565D9 0%, #4D0ACD 100%);
+  width: 134px;
+  height: 31px;
+  top: 195px;
+  left: 26px;
+  border-radius: 24px;
+  padding: 4px;
+  gap: 7px;
+  color: white;
+  
+}
+
+.persona-heading {
+  font-weight: 500;
+  font-size: 2.2rem;
+  margin-bottom: 8px;
+}
+
+.continue-button {
+    width: 233px;
+    height: 57px;
+    top: 598px;
+    left: 633px;
+    border-radius: 34px;
+    padding-top: 17px;
+    padding-right: 70px;
+    padding-bottom: 17px;
+    padding-left: 70px;
+    gap: 10px;
+    background: linear-gradient(99.18deg, #8F64E1 -46.89%, #1D68BD 223.45%);
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: #FFFFFF;
+  }
+  
+
+.persona-heading .bold {
+  font-weight: 800;
+}
+
+.persona-subtitle {
+  margin-bottom: 32px;
+  color: white;
+  
+  font-size: 1.1rem;
+  font-weight: 400;
+}
+
+.persona-role-cards {
+  gap: 24px;
+  margin-bottom: 32px;
+  justify-content: center;
+  display: flex;
+}
+
+.persona-role-card {
+  min-height: 100px;
+}
+
+.persona-main {
+  min-height: calc(100vh - 80px);
+  position: relative;
+  z-index: 1;
+} 
