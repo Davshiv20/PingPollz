@@ -9,7 +9,8 @@ const PollForm = () => {
   const [formData, setFormData] = useState({
     question: '',
     options: ['', ''],
-    max_time: 60
+    max_time: 60,
+    correctOptions: [false, false]
   });
 
   const handleInputChange = (e) => {
@@ -29,19 +30,31 @@ const PollForm = () => {
     }));
   };
 
+  const handleCorrectChange = (index) => {
+    const newCorrect = [...formData.correctOptions];
+    newCorrect[index] = !newCorrect[index];
+    setFormData(prev => ({
+      ...prev,
+      correctOptions: newCorrect
+    }));
+  };
+
   const addOption = () => {
     setFormData(prev => ({
       ...prev,
-      options: [...prev.options, '']
+      options: [...prev.options, ''],
+      correctOptions: [...prev.correctOptions, false]
     }));
   };
 
   const removeOption = (index) => {
     if (formData.options.length > 2) {
       const newOptions = formData.options.filter((_, i) => i !== index);
+      const newCorrect = formData.correctOptions.filter((_, i) => i !== index);
       setFormData(prev => ({
         ...prev,
-        options: newOptions
+        options: newOptions,
+        correctOptions: newCorrect
       }));
     }
   };
@@ -60,18 +73,23 @@ const PollForm = () => {
       return;
     }
 
+    // Only keep correctOptions for valid options
+    const validCorrect = formData.correctOptions.filter((_, i) => formData.options[i].trim() !== '');
+
     try {
       await dispatch(createPoll({
         question: formData.question.trim(),
         options: validOptions,
-        max_time: parseInt(formData.max_time)
+        max_time: parseInt(formData.max_time),
+        correctOptions: validCorrect
       })).unwrap();
       
       // Reset form
       setFormData({
         question: '',
         options: ['', ''],
-        max_time: 60
+        max_time: 60,
+        correctOptions: [false, false]
       });
     } catch (error) {
       console.error('Failed to create poll:', error);
@@ -105,6 +123,7 @@ const PollForm = () => {
           <label className="form-label">
             Options:
           </label>
+          <div className="option-instruction">Check the box if this option is correct.</div>
           {formData.options.map((option, index) => (
             <div key={index} className="option-input">
               <input
@@ -114,6 +133,13 @@ const PollForm = () => {
                 onChange={(e) => handleOptionChange(index, e.target.value)}
                 placeholder={`Option ${index + 1}`}
                 required
+              />
+              <input
+                type="checkbox"
+                className="correct-checkbox"
+                checked={formData.correctOptions[index] || false}
+                onChange={() => handleCorrectChange(index)}
+                title="Check if this option is correct"
               />
               {formData.options.length > 2 && (
                 <button

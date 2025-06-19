@@ -43,7 +43,7 @@ const PersonaSelector = () => {
             >
               <div className="role-card-title">I'm a Student</div>
               <div className="role-card-desc">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry
+                Click this if you are a student.
               </div>
             </div>
             <div

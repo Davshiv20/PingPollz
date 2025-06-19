@@ -12,7 +12,7 @@ const PollResults = () => {
       </div>
     );
   }
-
+  const correctOptions = currentPoll.correctOptions
   const totalVotes = Object.values(pollResults).reduce((sum, count) => sum + count, 0);
   const maxVotes = Math.max(...Object.values(pollResults));
 

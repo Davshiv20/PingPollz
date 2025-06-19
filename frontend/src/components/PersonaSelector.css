@@ -77,4 +77,19 @@
   min-height: calc(100vh - 80px);
   position: relative;
   z-index: 1;
+}
+
+.correct-checkbox {
+  margin-left: 10px;
+  margin-right: 6px;
+  transform: scale(1.2);
+  vertical-align: middle;
+}
+
+.option-instruction {
+  color: #6E6E6E;
+  font-size: 0.97rem;
+  margin-bottom: 8px;
+  text-align: left;
+  font-style: italic;
 } 

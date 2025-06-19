@@ -39,7 +39,7 @@ const TeacherDashboard = () => {
     <div>
       <header className="header">
         <div className="header-content">
-          <div className="logo">📊 Live Polling System</div>
+          <div className="logo" >📊 PingPoll</div>
           <div className="header-actions">
             <span style={{ color: '#666', marginRight: '20px' }}>
               👨‍🏫 Teacher Dashboard
