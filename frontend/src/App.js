@@ -16,6 +16,7 @@ import TeacherDashboard from './components/TeacherDashboard';
 import StudentDashboard from './components/StudentDashboard';
 import NameModal from './components/NameModal';
 import ChatPopup from './components/ChatPopup';
+import Footer from './components/Footer';
 import './App.css';
 
 function App() {
@@ -109,6 +110,7 @@ function App() {
         <Route path="/" element={<Navigate to={`/${persona}`} replace />} />
       </Routes>
       <ChatPopup />
+      <Footer />
     </div>
   );
 }
