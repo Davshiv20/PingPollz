@@ -10,9 +10,15 @@ const initialState = {
 
 export const joinAsStudent = createAsyncThunk(
   'student/joinAsStudent',
-  async (studentName) => {
+  async (studentName, { rejectWithValue }) => {
     return new Promise((resolve, reject) => {
+      // Set a timeout for the server response
+      const timer = setTimeout(() => {
+        reject('Request timed out. Please try again.');
+      }, 10000); // 10 seconds timeout
+
       socket.emit('join_as_student', { name: studentName }, (response) => {
+        clearTimeout(timer); // Clear the timeout if we get a response
         if (response.error) {
           reject(response.error);
         } else {
